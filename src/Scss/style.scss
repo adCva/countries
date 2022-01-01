@@ -1,0 +1,15 @@
+@import "config";
+
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    background-color: $light-mode-bg;
+    color: $light-mode-text;
+    font-family: $ff-main;
+    font-weight: $ff-semi-bold;
+    transition: $transition;
+    position: relative;
+}
