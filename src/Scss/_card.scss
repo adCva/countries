@@ -1,0 +1,95 @@
+.countries-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+
+    .countries-cards-container {
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (min-width: 1000px) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 4rem;
+        }
+    }
+
+    .country-card {
+        background-color: $dark-mode-txt-light-mode-el;
+        height: 350px;
+        box-shadow: $box-shadow;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        width: 72%;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+            box-shadow: $hover-box-shadow;
+            transform: scale(0.95);
+        }
+
+        img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+
+
+
+
+
+        .country-details-sm {
+            padding: 1.2rem 1.5rem 2rem 1.5rem;
+
+            h4 {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+
+            p {
+                margin-bottom: 0.3rem;
+                font-size: 0.9rem;
+                font-weight: 300;
+                color: $light-mode-input;
+
+                .card-detail-sm {
+                    font-weight: 600;
+                    color: $light-mode-text;
+                }
+            }
+        }
+
+
+
+        @media (min-width: 768px) {
+            width: 75%;
+            height: 360px;
+            margin: 2rem auto;
+        }
+
+        @media (min-width: 1000px) {
+            width: 95%;
+            margin: 1rem auto 0 auto;
+
+            img {
+                height: 150px;
+            }
+
+            .country-details-sm {
+                h4 {
+                    margin-bottom: 1rem;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
