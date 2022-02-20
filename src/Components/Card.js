@@ -1,24 +1,31 @@
 import React from 'react';
+// Redux.
+import { useSelector, useDispatch } from 'react-redux';
+import { openSinglePageDetails } from "../Features/viewModeSlice";
+
 
 
 function Card() {
-    return (
-        <div className="countries-list-wrapper">
+  // Redux state & dispatch.
+  const viewMode = useSelector(state => state.viewMode.darkMode);
+  const dispatch = useDispatch();
 
-            <div class="countries-cards-container min-max-width">
-                <div class="country-card" onclick="singleCountryHelper('${data[i].name}')">
-                    <img src="./images/flag.jpg" alt="Flag" />
-                    <div class="country-details-sm">
-                        <h4>France</h4>
-                        <p class="special-info"><span class="card-detail-sm small-title">Population: </span> 80.000.000</p>
-                        <p class="special-info"><span class="card-detail-sm small-title">Region: </span>Europe</p>
-                        <p class="special-info"><span class="card-detail-sm small-title">Capital: </span>Paris</p>
-                    </div>
-                </div>
-            </div>
-            
+
+  return (
+    <div className={viewMode ? "country-card country-card-dark" : "country-card country-card-light"} onClick={() => dispatch(openSinglePageDetails())}>
+        {/* ===================== Flag ===================== */}
+        <div className="country-flag-container">
+            <img src="./images/flag.jpg" alt="Flag" />
         </div>
-    )
+        {/* ===================== Details ===================== */}
+        <div className="country-short-details">
+            <h4>United kingdom of northern ireland and wales</h4>
+            <p><span>Population: </span> 80.000.000</p>
+            <p><span>Region: </span>Europe</p>
+            <p><span>Capital: </span>Paris</p>
+        </div>
+    </div>
+  )
 }
 
 export default Card;

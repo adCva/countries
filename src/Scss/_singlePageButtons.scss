@@ -1,0 +1,47 @@
+// ============================== Light Mode ==============================
+.single-country-btns-light {
+    .button {
+        background-color: $white;
+        color: $very-dark-blue;
+        box-shadow: $search-box-shadow;
+        
+        &:hover {
+            box-shadow: $hover-search-box-shadow;
+        }
+    }
+}
+
+
+
+// ============================== Dark Mode ==============================
+.single-country-btns-dark {
+    .button {
+        background-color: $dark-blue;
+        color: $white;
+        box-shadow: $search-box-shadow-dark;
+        
+        &:hover {
+            box-shadow: $hover-search-box-shadow-dark;
+        }
+    }
+}
+
+
+
+// ============================== General ==============================
+.single-country-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .button {
+        font-weight: $ff-semi-bold;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 0.6rem 1.8rem;
+        cursor: pointer;
+        transition: $transition;
+    }
+}

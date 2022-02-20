@@ -1,0 +1,88 @@
+// ============================== Light Mode ==============================
+.navbar-wrapper-light {
+    background-color: $white;
+    color: $very-dark-blue;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all 0.25s ease-in-out;
+
+    .navbar-container {
+        button {
+            color: $very-dark-blue;
+        }
+    }
+}
+
+
+
+// ============================== Dark Mode ==============================
+.navbar-wrapper-dark {
+    background-color: $dark-blue;
+    color: $white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+    transition: all 0.25s ease-in-out;
+    
+    .navbar-container {
+        button {
+            color: $white;
+        }
+    }
+}
+
+
+
+// ============================== Container ==============================
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include width-mix;
+    padding: 1.7rem 1rem;
+
+    @media (min-width: 768px) {
+        padding: 1.8rem 0;
+    }
+
+    @media (min-width: 1000px) {
+        padding: 1.6rem 0rem;
+    }
+
+
+    h3 {
+        font-size: 0.9rem;
+        font-weight: $ff-bold;
+
+        @media (min-width: 768px) {
+            font-size: 1rem;
+        }
+        @media (min-width: 1000px) {
+            font-size: 1.1rem;
+        }
+    }
+
+
+    button {
+        position: relative;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: $ff-semi-bold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+            font-size: 0.95rem;
+        }
+
+        @media (min-width: 1000px) {
+            font-size: 1rem;
+        }
+    }
+}

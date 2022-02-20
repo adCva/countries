@@ -1,7 +1,7 @@
 .footer-wrapper {
-    margin-top: 5rem;
     background-color: #202020;
-    color: $dark-mode-txt-light-mode-el;
+    color: $white;
+    margin-top: 5rem;
 
     &:before {
         content: "";
@@ -18,27 +18,9 @@
     }
 
 
+
     .footer-text-container {
-        padding: 3rem 1rem 5rem 1rem;
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 4rem;
-
-            a {
-                font-size: 0.85rem;
-                text-decoration: none;
-                color: #aaaaaa;
-                cursor: pointer;
-                margin-bottom: 1.4rem;
-
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
-            }
-        }
-
+        padding: 3rem 1rem 5rem;
 
         @media (min-width: 768px) {
             width: 60%;
@@ -46,21 +28,44 @@
         }
 
         @media (min-width: 1300px) {
-            padding: 5rem 1rem 7rem 1rem;
+            display: flex;
             width: 1300px;
             margin: 0 auto;
-            display: flex;
+            padding: 5rem 1rem 7rem 1rem;
+        }
 
-            .footer-links {
-                margin-bottom: 0;
-                margin-right: 14rem;
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 4rem;
+
+            a {
+                color: #aaaaaa;
+                font-size: 0.85rem;
+                text-decoration: none;
+                margin-bottom: 1.4rem;
+                cursor: pointer;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                @media (min-width: 1300px) {
+                    margin-bottom: 0;
+                    margin-right: 14rem;
+                }
             }
         }
     }
 
 
 
+
     .footer-text {
+        @media (min-width: 1300px) {
+            width: 40%;
+        }
+
         h5 {
             font-size: 1.1rem;
             margin-bottom: 1rem;
@@ -71,12 +76,5 @@
             color: #aaaaaa;
             line-height: 1.5;
         }
-
-        @media (min-width: 1300px) {
-            width: 40%;
-        }
     }
 }
-
-
-

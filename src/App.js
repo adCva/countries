@@ -1,15 +1,25 @@
-import Card from './Components/Card';
-import Footer from './Components/Footer';
-import Nav from './Components/Nav';
-import Single from './Components/Single';
 import './Reset.css';
 import './Scss/style.css';
+// Components.
+import Single from './Pages/Single';
+import List from './Pages/List';
+// Redux.
+import { useSelector } from 'react-redux';
+
+
 
 function App() {
+  // Redux state.
+  const viewPage = useSelector(state => state.viewMode.singlePageDetailsOpened);
+
   return (
     <div className="App">
-
+      {viewPage ? (
         <Single />
+      ) : (
+        <List />
+      )}
+      
     </div>
   );
 }

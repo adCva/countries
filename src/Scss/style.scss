@@ -1,25 +1,14 @@
 @import "config";
-@import "navbar";
+@import "nav";
 @import "card";
-@import "single";
+@import "search";
 @import "footer";
 
 
-html { 
-    scroll-behavior: smooth; 
-}
-
 body {
-    background-color: $light-mode-bg;
-    color: $light-mode-text;
     font-family: $ff-main;
-    font-weight: $ff-semi-bold;
-    transition: $transition;
-    position: relative;
 }
 
-.min-max-width {
-    width: 95%;
-    max-width: 1300px;
-    margin: 0 auto;
-}
+@import "mainContentClass";
+@import "singlePageButtons";
+@import "singlePageDetails";

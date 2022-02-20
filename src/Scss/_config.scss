@@ -1,20 +1,47 @@
 // Colors.
-$dark-mode-el: #2b3945;
-$dark-mode-bg: #202c37;
-$light-mode-text: #0e1011;
-$light-mode-input: #858585;
-$light-mode-bg: #fafafa;
-$dark-mode-txt-light-mode-el: #ffffff;
+$white: #ffffff; // Dark mode text & light mode elements
+
+// Dark mode colors.
+$dark-blue: #2b3945; // Dark mode elements.
+$medium-dark-blue: #202c37; // Dark mode background.
+
+// Light mode colors.
+$very-light-gray:#fafafa; // Light mode background.
+$dark-gray: #858585; // Light mode input.
+$very-dark-blue: #111517; // Light mode text.
+
 
 
 // Typography.
 $ff-main: 'Nunito Sans', sans-serif;
 $fw-light: 300;
 $ff-semi-bold: 600;
-$ff-extra-bold: 800;
+$ff-bold: 800;
+$home-page-font-size: 14px;
+$details-page-font-size: 16px;
+
+
+
+// Box shadow light mode.
+$general-box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+$hover-general-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+$search-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$hover-search-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+// Box shadow dark mode.
+$search-box-shadow-dark: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+$hover-search-box-shadow-dark: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+
 
 
 // Others.
-$box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-$hover-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-$transition: all 0.2s ease-in-out;
+$transition: all 0.25s ease-in-out;
+
+
+// Mixins.
+@mixin width-mix {
+    width: 95%;
+    max-width: 1300px;
+    margin: 0 auto;
+}

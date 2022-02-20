@@ -1,0 +1,211 @@
+// ============================== Light Mode ==============================
+.single-country-big-wrapper-light {
+    .other-details-wrapper {
+        .two-panels-container {
+            p {
+                span {
+                    color: $very-dark-blue;
+                }
+            }
+        }
+
+        .border-wrapper {
+            .borders-countires {
+
+                p {
+                    background-color: $white;
+                    box-shadow: $general-box-shadow;
+
+                    &:hover {
+                        box-shadow: $hover-search-box-shadow-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// ============================== Dark Mode ==============================
+.single-country-big-wrapper-dark {
+    .other-details-wrapper {
+        .two-panels-container {
+            p {
+                span {
+                    color: $white;
+                }
+            }
+        }
+
+        .border-wrapper {
+            .borders-countires {
+
+                p {
+                    background-color: $dark-blue;
+                    box-shadow: $search-box-shadow-dark;
+
+                    &:hover {
+                        box-shadow: $hover-search-box-shadow-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// ============================== General ==============================
+.single-country-big-wrapper {
+    width: 90%;
+    margin: 3rem auto 1rem;
+
+    @media (min-width: 768px) {
+        width: 60%;
+    }
+    @media (min-width: 1000px) {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 8rem;
+        margin: 5rem auto 2rem;
+    }
+
+
+    // =============== Flag
+    .country-flag {
+        width: 100%;
+        height: 190px;
+
+        @media (min-width: 500px) {
+            height: 230px;
+        }
+        @media (min-width: 768px) {
+            height: 250px;
+        }
+        @media (min-width: 1000px) {
+            height: 430px;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    // =============== Other details wrapper
+    .other-details-wrapper {
+        margin-top: 2rem;
+
+        @media (min-width: 768px) {
+            margin-top: 2.5rem;
+        }
+        @media (min-width: 1000px) {
+            margin-top: 1rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: $ff-bold;
+            letter-spacing: 0.7px;
+
+            @media (min-width: 768px) {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+            @media (min-width: 1000px) {
+                font-size: 1.9rem;
+            }
+        }
+
+        // =============== Two panels container
+        .two-panels-container {
+            margin: 1.5rem 0 3.5rem;
+
+            @media (min-width: 1000px) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 2rem 0 3.5rem 0;
+            }
+
+            p {
+                font-size: 0.9rem;
+                font-weight: $ff-semi-bold;
+                color: $dark-gray;
+                margin-bottom: 0.5rem;
+                letter-spacing: 0.5px;
+
+                @media (min-width: 1000px) {
+                    font-size: 0.95rem;
+                    margin-bottom: 0.8rem;
+                }
+
+                span {
+                    margin-right: 0.15rem;
+
+                    @media (min-width: 1000px) {
+                        margin-right: 0.2rem;
+                    }
+                }
+            }
+
+            .second-panel {
+                margin-top: 1.5rem;
+
+                @media (min-width: 1000px) {
+                    margin-top: 0rem;
+                }
+            }
+        }
+
+
+        // =============== Borders container
+        .border-wrapper {
+            @media (min-width: 1000px) {
+                display: flex;
+                align-items: center;
+            }
+
+            h4 {
+                font-size: 0.95rem;
+                font-weight: $ff-semi-bold;
+                letter-spacing: 0.5px;
+                margin-bottom: 1.5rem;
+
+                @media (min-width: 1000px) {
+                    margin-bottom: 0;
+                    margin-right: 2rem;
+                }
+            }
+
+            .borders-countires {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 1.5rem;
+
+                @media (min-width: 1000px) {
+                    margin-top: 0;
+                }
+
+                p {
+                    color: $dark-gray;
+                    font-size: 0.75rem;
+                    font-weight: $ff-semi-bold;
+                    letter-spacing: 0.5px;
+                    text-align: center;
+                    padding: 0.5rem 0.6rem;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    transition: $transition;
+
+                    @media (min-width: 1000px) {
+                        padding: 0.4rem 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
