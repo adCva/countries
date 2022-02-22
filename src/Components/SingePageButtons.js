@@ -1,7 +1,7 @@
 import React from 'react';
 // Redux.
 import { useSelector, useDispatch } from 'react-redux';
-import { closeSinglePageDetails } from "../Features/viewModeSlice";
+import { closeSinglePageDetails } from "../Features/singlePageSlice";
 // Icons.
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { ImHome } from "react-icons/im";

@@ -5,7 +5,10 @@ export const viewModeSlice = createSlice({
     name: "viewMode",
     initialState: {
         darkMode: false,
-        singlePageDetailsOpened: false
+        showRegion: "all",
+        singlePageDetailsOpened: false,
+        singleCountryArray: [],
+        countriesListObj: {data: []} // Will be an array of objects.
     },
 
     reducers: {
@@ -14,17 +17,11 @@ export const viewModeSlice = createSlice({
                 ...state,
                 darkMode: !state.darkMode
             }
-        },
-        openSinglePageDetails: state => {
-            state.singlePageDetailsOpened = true
-        },
-        closeSinglePageDetails: state => {
-            state.singlePageDetailsOpened = false
         }
     }
 })
 
 
-export const { changeViewMode, openSinglePageDetails, closeSinglePageDetails } = viewModeSlice.actions;
+export const { changeViewMode } = viewModeSlice.actions;
 
 export default viewModeSlice.reducer;

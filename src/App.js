@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
   // Redux state.
-  const viewPage = useSelector(state => state.viewMode.singlePageDetailsOpened);
+  const viewPage = useSelector(state => state.singlePage.singlePageDetailsOpened);
 
   return (
     <div className="App">

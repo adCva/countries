@@ -13,6 +13,7 @@ function List() {
     // Redux state.
     const viewMode = useSelector(state => state.viewMode.darkMode);
 
+
     return (
       <div className={viewMode ? "mainContent mainContent-dark" : "mainContent mainContent-light"}>
           <header>

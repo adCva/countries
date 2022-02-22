@@ -5,20 +5,29 @@ import { useTransition, animated } from 'react-spring';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaSearchLocation } from "react-icons/fa";
 // Redux.
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
 
 
 
 function Search() {
-    // Redux state, local state & ref.
-    const [ dropDown, setDropDown ] = useState(false);
+    // Redux state, dispatch, local state & ref.
     const viewMode = useSelector(state => state.viewMode.darkMode);
+    const dispatch = useDispatch();
+    const [ dropDown, setDropDown ] = useState(false);
     const dropDownRef = useRef();
 
 
     // Open/Close dropdown.
     const toogleDropDown = () => {
         setDropDown(!dropDown);
+    }
+
+
+    // Region btn click.
+    const chooseRegion = (geoRegion) => {
+        dispatch(makeCountriesListAPICall({region: geoRegion}));
+        setDropDown(false);
     }
 
 
@@ -58,12 +67,12 @@ function Search() {
                 <button className="dropDown-region-btn" onClick={toogleDropDown}>Filter By Region {dropDown ? <IoIosArrowUp/> : <IoIosArrowDown/>} </button>
                 {transition((style, mobileMenu) => mobileMenu ? (
                     <animated.div style={style} className="regions-menu" ref={dropDownRef} >
-                        <button>All</button>
-                        <button>Africa</button>
-                        <button>America</button>
-                        <button>Asia</button>
-                        <button>Europe</button>
-                        <button>Oceania</button>
+                        <button onClick={() => chooseRegion("all")}>All</button>
+                        <button onClick={() => chooseRegion("Africa")}>Africa</button>
+                        <button onClick={() => chooseRegion("America")}>America</button>
+                        <button onClick={() => chooseRegion("Asia")}>Asia</button>
+                        <button onClick={() => chooseRegion("Europe")}>Europe</button>
+                        <button onClick={() => chooseRegion("Oceania")}>Oceania</button>
                     </animated.div>
                 ) : null)}
             </div>
