@@ -5,6 +5,7 @@ import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
 import { getSingeCountryData } from "../Features/getSingleCountryMiddleware";
 
 
+
 function Card() {
   // Redux state & dispatch.
   const countriesList = useSelector(state => state.countriesList.countriesListObj);
@@ -13,8 +14,6 @@ function Card() {
 
   // Make API call.
   useEffect(() => {
-    dispatch(makeCountriesListAPICall({region: "all"}));
-    /*
     let loadCountriesData = () => {
       dispatch(makeCountriesListAPICall({region: "all"}));
     }
@@ -23,8 +22,7 @@ function Card() {
     return () => {
       window.removeEventListener("load", loadCountriesData);
     }
-    */
-  }, [dispatch]);
+  });
 
 
 

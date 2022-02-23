@@ -7,20 +7,40 @@ import { FaSearchLocation } from "react-icons/fa";
 // Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
+import { displatSearchFilterResaults, cancelSearchFilter } from "../Features/countriesListData";
 
 
 
 function Search() {
     // Redux state, dispatch, local state & ref.
+    const countriesList = useSelector(state => state.countriesList.countriesListObj);
     const viewMode = useSelector(state => state.viewMode.darkMode);
     const dispatch = useDispatch();
+
     const [ dropDown, setDropDown ] = useState(false);
+    const [name, setName] = useState('');
     const dropDownRef = useRef();
 
 
     // Open/Close dropdown.
     const toogleDropDown = () => {
         setDropDown(!dropDown);
+    }
+
+
+    // Filter.
+    const filter = (e) => {
+        const keyword = e.target.value;
+
+        if (keyword !== '') {
+            const results = countriesList.data.filter((country) => {
+                return country.name.common.toLowerCase().startsWith(keyword.toLowerCase());
+            })
+
+            dispatch(displatSearchFilterResaults({data: results}));
+        } else {
+            dispatch(cancelSearchFilter());
+        }
     }
 
 
@@ -60,7 +80,7 @@ function Search() {
             {/* ===================== Input, search by name ===================== */}
             <div className="search-by-name-wrapper">
                 <FaSearchLocation/>
-                <input type="text" name="country" placeholder="Search for a country..." id="searchCountry" />
+                <input type="text" name="country" placeholder="Search for a country..." id="searchCountry" onChange={filter}/>
             </div>
             {/* ===================== Dropdown, search by region ===================== */}
             <div className="dropDown-wrapper">
