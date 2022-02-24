@@ -4,6 +4,7 @@ import Nav from '../Components/Nav';
 import SingePageButtons from '../Components/SingePageButtons';
 import SinglePageDetails from '../Components/SinglePageDetails';
 import Footer from '../Components/Footer';
+import Load from '../Components/Load';
 // Redux.
 import { useSelector } from 'react-redux';
 
@@ -12,6 +13,7 @@ import { useSelector } from 'react-redux';
 function Single() {
   // Redux state.
   const viewMode = useSelector(state => state.viewMode.darkMode);
+  const loading = useSelector(state => state.singlePage.loading);
 
 
   return (
@@ -20,6 +22,7 @@ function Single() {
             <Nav />
         </header>
         <main>
+          {loading ? <Load /> : null}
           {/* ===================== Where main content is, search & cards ===================== */}
           <div className="mainContent-container">
             <SingePageButtons />

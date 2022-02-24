@@ -6,16 +6,20 @@ export const countriesListData = createSlice({
     initialState: {
         countriesListObj: {data: []},
         backupCountriesListObj: {data: []},
-        searchMode: false
+        searchMode: false,
+        loadingList: false
     },
     reducers: {
         getCountriesListData: (state, action) => {
             let countriesData = {data: action.payload.data};
+            // Sort them alphabeticaly
+            countriesData.data.sort((a,b) => (a.name.common > b.name.common) ? 1 : ((b.name.common > a.name.common) ? -1 : 0));
 
             return {
                 ...state,
                 countriesListObj: countriesData,
-                backupCountriesListObj: countriesData
+                backupCountriesListObj: countriesData,
+                loadingList: false
             }
         },
         displatSearchFilterResaults: (state, action) => {
@@ -31,10 +35,13 @@ export const countriesListData = createSlice({
                 ...state,
                 countriesListObj: state.backupCountriesListObj
             }
+        },
+        startLoadingList: state => {
+            state.loadingList = true
         }
     }
 })
 
-export const { getCountriesListData, displatSearchFilterResaults, cancelSearchFilter } = countriesListData.actions;
+export const { getCountriesListData, displatSearchFilterResaults, cancelSearchFilter, startLoadingList } = countriesListData.actions;
 
 export default countriesListData.reducer;

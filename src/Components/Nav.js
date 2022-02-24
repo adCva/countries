@@ -14,7 +14,7 @@ function Nav() {
 
     
     return (
-      <div className={viewMode ? "navbar-wrapper-dark" : "navbar-wrapper-light"}>
+      <div className={viewMode ? "navbar-wrapper-dark" : "navbar-wrapper-light"} id="navbar">
           <div className="navbar-container min-max-width">
               <h3>Where in the world ?</h3>
               <button onClick={() => dispatch(changeViewMode())}><span>{viewMode ? <BsFillCloudSunFill />  : <BsFillMoonStarsFill />}</span> {viewMode ? "Light Mode"  : "Dark Mode"}</button>

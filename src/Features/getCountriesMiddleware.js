@@ -8,7 +8,7 @@ export const makeCountriesListAPICall = createAsyncThunk(
     async ({region}, { dispatch }) => {
         if (region === "all") {
             return fetch(`https://restcountries.com/v3.1/all`)
-                .then((res) => res.json()).then(resData => dispatch(getCountriesListData({data: resData})))
+                .then((res) => res.json()).then(resData => dispatch(getCountriesListData({data: resData})) )
                 .catch((err) => console.log(err))
         } else {
             return fetch(`https://restcountries.com/v3.1/region/${region}`)

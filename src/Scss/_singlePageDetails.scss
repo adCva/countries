@@ -1,8 +1,14 @@
 // ============================== Light Mode ==============================
 .single-country-big-wrapper-light {
     .other-details-wrapper {
+        h3 {
+            font-weight: $ff-bold;
+        }
+
         .two-panels-container {
             p {
+                font-weight: $ff-semi-bold;
+
                 span {
                     color: $very-dark-blue;
                 }
@@ -15,7 +21,7 @@
                 p {
                     background-color: $white;
                     box-shadow: $general-box-shadow;
-
+                    color: darken($dark-gray, 10%);
                     &:hover {
                         box-shadow: $hover-search-box-shadow-dark;
                     }
@@ -29,11 +35,26 @@
 
 // ============================== Dark Mode ==============================
 .single-country-big-wrapper-dark {
+    // =============== Flag
+    .country-flag {        
+        img {
+            filter: brightness(.8) contrast(1.2);
+        }
+    }
+
     .other-details-wrapper {
+        h3 {
+            color: #e1e1e1;
+            font-weight: $ff-semi-bold;
+        }
+
         .two-panels-container {
             p {
+                color: lighten($dark-gray, 20%);
+                font-weight: $fw-light;
+
                 span {
-                    color: $white;
+                    color: darken($white, 8%);
                 }
             }
         }
@@ -44,7 +65,7 @@
                 p {
                     background-color: $dark-blue;
                     box-shadow: $search-box-shadow-dark;
-
+                    color: lighten($dark-gray, 10%);
                     &:hover {
                         box-shadow: $hover-search-box-shadow-dark;
                     }
@@ -64,7 +85,7 @@
     @media (min-width: 768px) {
         width: 60%;
     }
-    @media (min-width: 1000px) {
+    @media (min-width: 1200px) {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -76,13 +97,11 @@
     // =============== Flag
     .country-flag {
         width: 100%;
-        height: 190px;
+        height: 200px;
+        box-shadow: rgba(10, 10, 10, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
-        @media (min-width: 500px) {
-            height: 230px;
-        }
-        @media (min-width: 768px) {
-            height: 250px;
+        @media (min-width: 520px) {
+            height: 300px;
         }
         @media (min-width: 1000px) {
             height: 430px;
@@ -96,19 +115,16 @@
 
     // =============== Other details wrapper
     .other-details-wrapper {
-        margin-top: 2rem;
+        margin-top: 3rem;
 
-        @media (min-width: 768px) {
-            margin-top: 2.5rem;
-        }
-        @media (min-width: 1000px) {
+        @media (min-width: 1200px) {
             margin-top: 1rem;
         }
 
         h3 {
-            font-size: 1.6rem;
-            font-weight: $ff-bold;
+            font-size: 1.7rem;
             letter-spacing: 0.7px;
+            line-height: 1.3;
 
             @media (min-width: 768px) {
                 font-size: 1.8rem;
@@ -126,32 +142,36 @@
             @media (min-width: 1000px) {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                margin: 2rem 0 3.5rem 0;
+                gap: 2rem;
+                margin: 2rem 0 5rem 0;
             }
 
             p {
                 font-size: 0.9rem;
-                font-weight: $ff-semi-bold;
                 color: $dark-gray;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.75rem;
                 letter-spacing: 0.5px;
+                line-height: 1.3;
 
                 @media (min-width: 1000px) {
                     font-size: 0.95rem;
                     margin-bottom: 0.8rem;
+                    line-height: 1.4;
                 }
 
                 span {
+                    font-size: 0.92rem;
                     margin-right: 0.15rem;
 
                     @media (min-width: 1000px) {
                         margin-right: 0.2rem;
+                        font-size: 0.97rem;
                     }
                 }
             }
 
             .second-panel {
-                margin-top: 1.5rem;
+                margin-top: 2rem;
 
                 @media (min-width: 1000px) {
                     margin-top: 0rem;
@@ -162,10 +182,6 @@
 
         // =============== Borders container
         .border-wrapper {
-            @media (min-width: 1000px) {
-                display: flex;
-                align-items: center;
-            }
 
             h4 {
                 font-size: 0.95rem;
@@ -174,8 +190,8 @@
                 margin-bottom: 1.5rem;
 
                 @media (min-width: 1000px) {
-                    margin-bottom: 0;
                     margin-right: 2rem;
+
                 }
             }
 
@@ -186,10 +202,13 @@
 
                 @media (min-width: 1000px) {
                     margin-top: 0;
+                    grid-gap: 2rem;
                 }
 
                 p {
-                    color: $dark-gray;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     font-size: 0.75rem;
                     font-weight: $ff-semi-bold;
                     letter-spacing: 0.5px;
@@ -202,7 +221,7 @@
                     transition: $transition;
 
                     @media (min-width: 1000px) {
-                        padding: 0.4rem 1.4rem;
+                        padding: 0.65rem 1.4rem;
                     }
                 }
             }

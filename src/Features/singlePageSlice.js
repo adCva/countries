@@ -4,6 +4,7 @@ export const singlePageSlice = createSlice({
     name: "singlePageSlice",
     initialState: {
         singlePageDetailsOpened: false,
+        loading: false,
         countryCode: "",
         singleCountryArray: [],
         singleCountryData : {},
@@ -16,6 +17,7 @@ export const singlePageSlice = createSlice({
             return {
                 ...state,
                 singlePageDetailsOpened: true,
+                loading: false,
                 singleCountryData: countryData
             }
         },
@@ -40,9 +42,12 @@ export const singlePageSlice = createSlice({
             state.singleCountryArray = []
             state.singleCountryData = {data: {}}
         },
+        startLoading: state => {
+            state.loading = true
+        }
     }
 })
 
-export const { openSinglePageDetails, addCountryCode, removeLastCountryCode, closeSinglePageDetails } = singlePageSlice.actions;
+export const { openSinglePageDetails, addCountryCode, removeLastCountryCode, closeSinglePageDetails, startLoading} = singlePageSlice.actions;
 
 export default singlePageSlice.reducer;

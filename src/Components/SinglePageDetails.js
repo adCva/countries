@@ -1,4 +1,5 @@
 import React from 'react';
+import { startLoading } from "../Features/singlePageSlice";
 // Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingeCountryData } from "../Features/getSingleCountryMiddleware";
@@ -16,6 +17,7 @@ function SinglePageDetails() {
 
     // Click on border.
     const displayNewCountry = (countryCode, destination) => {
+        dispatch(startLoading());
         dispatch(getSingeCountryData({countryCode: destination}));
         dispatch(addCountryCode({code: countryCode}));
     }
@@ -34,15 +36,15 @@ function SinglePageDetails() {
                 <div className="two-panels-container">
                     <div className="first-panel">
                         <p><span>Population: </span>{countryDetails.population.toLocaleString("en-US")}</p>
-                        <p><span>Native name: </span>{countryDetails.name.nativeName[Object.keys(countryDetails.name.nativeName)[0]].official}</p>
+                        <p><span>Native name: </span>{countryDetails.name.nativeName ? countryDetails.name.nativeName[Object.keys(countryDetails.name.nativeName)[0]].official : ""}</p>
                         <p><span>Region: </span>{countryDetails.region}</p>
                         <p><span >Sub Region: </span>{countryDetails.subregion}</p>
-                        <p><span>Capital: </span>{countryDetails.capital}</p>
+                        <p><span>Capital: </span>{countryDetails.capital ? countryDetails.capital : ""}</p>
                     </div>
                     <div className="second-panel">
                         <p><span>Top Level Domain: </span>{countryDetails.tld}</p>
-                        <p><span>Currencies: </span>{countryDetails.currencies[Object.keys(countryDetails.currencies)[0]].name}</p>
-                        <p><span>Languages: </span>{countryDetails.languages[Object.keys(countryDetails.languages)[0]]}</p>
+                        <p><span>Currencies: </span>{countryDetails.currencies ? countryDetails.currencies[Object.keys(countryDetails.currencies)[0]].name : ""}</p>
+                        <p><span>Languages: </span>{countryDetails.languages ? countryDetails.languages[Object.keys(countryDetails.languages)[0]] : ""}</p>
                     </div>
                 </div>
                 {/* ===================== Borders ===================== */}

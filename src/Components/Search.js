@@ -8,12 +8,14 @@ import { FaSearchLocation } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
 import { displatSearchFilterResaults, cancelSearchFilter } from "../Features/countriesListData";
+import { startLoadingList } from "../Features/countriesListData";
 
 
 
 function Search() {
     // Redux state, dispatch, local state & ref.
     const countriesList = useSelector(state => state.countriesList.countriesListObj);
+    const countriesListBackup = useSelector(state => state.countriesList.backupCountriesListObj);
     const viewMode = useSelector(state => state.viewMode.darkMode);
     const dispatch = useDispatch();
 
@@ -33,8 +35,9 @@ function Search() {
         const keyword = e.target.value;
 
         if (keyword !== '') {
-            const results = countriesList.data.filter((country) => {
-                return country.name.common.toLowerCase().startsWith(keyword.toLowerCase());
+            const backUp = countriesListBackup.data;
+            const results = backUp.filter((country) => {
+                return country.name.common.toLowerCase().includes(keyword.toLowerCase());
             })
 
             dispatch(displatSearchFilterResaults({data: results}));
@@ -46,6 +49,7 @@ function Search() {
 
     // Region btn click.
     const chooseRegion = (geoRegion) => {
+        dispatch(startLoadingList());
         dispatch(makeCountriesListAPICall({region: geoRegion}));
         setDropDown(false);
     }

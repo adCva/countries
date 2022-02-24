@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
 import { getSingeCountryData } from "../Features/getSingleCountryMiddleware";
+import { startLoading } from "../Features/singlePageSlice";
 
 
 
@@ -12,7 +13,8 @@ function Card() {
   const viewMode = useSelector(state => state.viewMode.darkMode);
   const dispatch = useDispatch();
 
-  // Make API call.
+  
+  // Make API call on page load.
   useEffect(() => {
     let loadCountriesData = () => {
       dispatch(makeCountriesListAPICall({region: "all"}));
@@ -25,11 +27,18 @@ function Card() {
   });
 
 
+  // Go to details page.
+  const detailsPage = (countryCode) => {
+    dispatch(startLoading());
+    dispatch(getSingeCountryData({countryCode: countryCode}));
+  };
+
+
 
   return (
     countriesList.data.map((element, index) => {
       return (
-        <div className={viewMode ? "country-card country-card-dark" : "country-card country-card-light"} onClick={() => dispatch(getSingeCountryData({countryCode: element.ccn3}))} key={index}>
+        <div className={viewMode ? "country-card country-card-dark" : "country-card country-card-light"} onClick={() => detailsPage(element.ccn3)} key={index}>
             {/* ===================== Flag ===================== */}
             <div className="country-flag-container">
                 <img src={element.flags.png} alt="Flag" />
@@ -37,7 +46,7 @@ function Card() {
             {/* ===================== Details ===================== */}
             <div className="country-short-details">
                 <h4>{element.name.common}</h4>
-                <p><span>Population: </span> {element.population}</p>
+                <p><span>Population: </span> {element.population.toLocaleString("en-US")}</p>
                 <p><span>Region: </span>{element.region}</p>
                 <p><span>Capital: </span>{element.capital}</p>
             </div>

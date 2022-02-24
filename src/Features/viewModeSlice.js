@@ -5,10 +5,7 @@ export const viewModeSlice = createSlice({
     name: "viewMode",
     initialState: {
         darkMode: false,
-        showRegion: "all",
-        singlePageDetailsOpened: false,
-        singleCountryArray: [],
-        countriesListObj: {data: []} // Will be an array of objects.
+        loading: false
     },
 
     reducers: {

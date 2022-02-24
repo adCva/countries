@@ -7,8 +7,11 @@
 
 body {
     font-family: $ff-main;
+    scroll-behavior: smooth;
 }
 
+@import "load";
+@import "backTopBtn";
 @import "mainContentClass";
 @import "singlePageButtons";
 @import "singlePageDetails";
