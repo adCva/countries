@@ -1,6 +1,6 @@
 import React from 'react';
 import { startLoading } from "../Features/singlePageSlice";
-// Redux.
+// ========= Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingeCountryData } from "../Features/getSingleCountryMiddleware";
 import { addCountryCode } from "../Features/singlePageSlice";
@@ -8,14 +8,14 @@ import { addCountryCode } from "../Features/singlePageSlice";
 
 
 function SinglePageDetails() {
-    // Redux state.
-    const viewMode = useSelector(state => state.viewMode.darkMode);
+    // ========= Redux state.
+    const darkMode = useSelector(state => state.viewMode.darkMode);
     const countryDetails = useSelector(state => state.singlePage.singleCountryData[0]);
     const borderFullNames = useSelector(state => state.singlePage.translatedBorderingCountries);
     const dispatch = useDispatch();
-    window.scrollTo(0, 0);
 
-    // Click on border.
+
+    // ========= Click on border.
     const displayNewCountry = (countryCode, destination) => {
         dispatch(startLoading());
         dispatch(getSingeCountryData({countryCode: destination}));
@@ -23,8 +23,13 @@ function SinglePageDetails() {
     }
 
 
+    // ========= Move to top of page on page load.
+    window.scrollTo(0, 0);
+
+
+    
     return (
-        <div className={viewMode ? "single-country-big-wrapper single-country-big-wrapper-dark" : "single-country-big-wrapper single-country-big-wrapper-light"}>
+        <div className={darkMode ? "single-country-big-wrapper single-country-big-wrapper-dark" : "single-country-big-wrapper single-country-big-wrapper-light"}>
             {/* ===================== Flag ===================== */}
             <div className="country-flag">
                 <img src={countryDetails.flags.png} alt="Flag" />

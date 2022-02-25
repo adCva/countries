@@ -31,4 +31,4 @@ const singleCountryDetails = createSlice({
     }
 })
 
-export default singleCountryDetails.reducer
+export default singleCountryDetails.reducer;

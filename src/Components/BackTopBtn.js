@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
-import { BsFillArrowUpSquareFill } from "react-icons/bs";
+import { BsArrowUpSquareFill } from "react-icons/bs";
 import { Link as LinkScroll } from "react-scroll";
+// ========= Redux.
+import { useSelector } from 'react-redux';
+
+
 
 function BackTopBtn() {
+    // ========= Redux & local state.
+    const darkMode = useSelector(state => state.viewMode.darkMode);
     const [ displayBtn, setDisplayBtn ] = useState(false);
 
     useEffect(() => {
@@ -28,8 +34,8 @@ function BackTopBtn() {
 
     return (
         transition((style, displayBtn) => displayBtn ? (
-            <animated.div style={style} className="btn-backTop"  >
-                <LinkScroll to='navbar' smooth={true} duration={500} spy={true} exact='true' offset={-80} className="scroll-btn"><BsFillArrowUpSquareFill/></LinkScroll>
+            <animated.div style={style} className={darkMode ? "btn-backTop btn-backTop-dark" : "btn-backTop btn-backTop-light "}    >
+                <LinkScroll to='navbar' smooth={true} duration={500} spy={true} exact='true' offset={-80} className="scroll-btn"><BsArrowUpSquareFill/></LinkScroll>
             </animated.div>
         ) : null)
     )

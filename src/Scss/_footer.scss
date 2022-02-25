@@ -18,40 +18,60 @@
     }
 
 
-
+    // =============== Container.
     .footer-text-container {
+        @include width-mix;
         padding: 3rem 1rem 5rem;
 
         @media (min-width: 768px) {
             width: 60%;
             margin: 0 auto;
+            padding: 4rem 1rem 5rem;
         }
 
         @media (min-width: 1300px) {
             display: flex;
             width: 1300px;
             margin: 0 auto;
-            padding: 5rem 1rem 7rem 1rem;
+            padding: 5rem 1rem 4rem;
         }
 
+
+        // =============== Links.
         .footer-links {
             display: flex;
             flex-direction: column;
             margin-bottom: 4rem;
 
+            @media (min-width: 768px) {
+                margin-bottom: 5rem;
+            }
+            @media (min-width: 1300px) {
+                margin-right: 0;
+            }
+
+
             a {
                 color: #aaaaaa;
                 font-size: 0.85rem;
+                font-weight: $fw-regular;
+                letter-spacing: 1px;
                 text-decoration: none;
                 margin-bottom: 1.4rem;
                 cursor: pointer;
+                transition: $transition;
 
+                &:hover {
+                    color: #ffffff;
+                }
                 &:last-of-type {
                     margin-bottom: 0;
                 }
 
+                @media (min-width: 768px) {
+                    font-size: 0.9rem;
+                }
                 @media (min-width: 1300px) {
-                    margin-bottom: 0;
                     margin-right: 14rem;
                 }
             }
@@ -60,21 +80,29 @@
 
 
 
-
+    // =============== Text container.
     .footer-text {
         @media (min-width: 1300px) {
             width: 40%;
         }
 
         h5 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: $fw-semi-bold;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            margin-bottom: 2rem;
         }
 
         p {
-            font-size: 0.85rem;
             color: #aaaaaa;
-            line-height: 1.5;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            line-height: 1.7;
+
+            @media (min-width: 768px) {
+                font-size: 0.85rem;
+            }
         }
     }
 }

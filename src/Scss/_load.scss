@@ -1,3 +1,46 @@
+// ============================== Light Mode ==============================
+.load-wrapper-light {
+    background: rgba(233, 233, 233, 0.9);
+
+    span {
+        background: #d90429;
+
+        &:nth-child(2) {
+            background: #3a86ff;
+        }
+        &:nth-child(3) {
+            background: #ffba08;
+        }
+        &:nth-child(4) {
+            background: #38b000;
+        }
+    }
+}
+
+
+
+// ============================== Dark Mode ==============================
+.load-wrapper-dark {
+    background: rgba(27, 27, 27, 0.95);
+
+    span {
+        background: #d90429;
+
+        &:nth-child(2) {
+            background: #3a86ff;
+        }
+        &:nth-child(3) {
+            background: #ffba08;
+        }
+        &:nth-child(4) {
+            background: #38b000;
+        }
+    }
+}
+
+
+
+// ============================== General style ==============================
 .load-wrapper {
     position: fixed;
     top: 0;
@@ -5,17 +48,48 @@
     bottom: 0;
     left: 0;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2.5rem;
-    font-weight: $ff-bold;
+    font-weight: $fw-bold;
     letter-spacing: 4px;
     user-select: none;
 
     @media (min-width: 768px) {
         font-size: 3rem;
+    }
+
+    span {
+        border-radius: 50%;
+        margin: 5rem 0.5rem;
+        animation: bouncingLoader 0.6s infinite alternate;
+
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        &:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        &:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+    }
+}
+
+
+
+@keyframes bouncingLoader {
+    from {
+      width: 0.1rem;
+      height: 0.1rem;
+      opacity: 1;
+      transform: translate3d(0);
+    }
+    to {
+      width: 1rem;
+      height: 1rem;
+      opacity: 0.1;
+      transform: translate3d(0, -1rem, 0);
     }
 }

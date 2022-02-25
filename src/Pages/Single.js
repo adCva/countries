@@ -1,23 +1,23 @@
 import React from 'react';
-// Components.
+// ========= Components.
 import Nav from '../Components/Nav';
 import SingePageButtons from '../Components/SingePageButtons';
 import SinglePageDetails from '../Components/SinglePageDetails';
 import Footer from '../Components/Footer';
 import Load from '../Components/Load';
-// Redux.
+// ========= Redux.
 import { useSelector } from 'react-redux';
 
 
 
 function Single() {
-  // Redux state.
-  const viewMode = useSelector(state => state.viewMode.darkMode);
+  // ========= Redux state.
+  const darkMode = useSelector(state => state.viewMode.darkMode);
   const loading = useSelector(state => state.singlePage.loading);
 
 
   return (
-    <div className={viewMode ? "mainContent mainContent-dark" : "mainContent mainContent-light"}>
+    <div className={darkMode ? "mainContent mainContent-dark" : "mainContent mainContent-light"}>
         <header>
             <Nav />
         </header>

@@ -19,14 +19,14 @@
 .mainContent {
     position: relative;
     font-size: $home-page-font-size;
-    transition: all 0.25s ease-in-out;
+    transition: $transition;
 
     .mainContent-container {
         @include width-mix;
-        padding: 1.5rem 0;
+        padding: 2.5rem 0;
 
         @media (min-width: 768px) {
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
         @media (min-width: 1000px) {
             padding: 2.5rem 0;

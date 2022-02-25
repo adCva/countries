@@ -2,12 +2,12 @@
 .single-country-big-wrapper-light {
     .other-details-wrapper {
         h3 {
-            font-weight: $ff-bold;
+            font-weight: $fw-bold;
         }
 
         .two-panels-container {
             p {
-                font-weight: $ff-semi-bold;
+                font-weight: $fw-semi-bold;
 
                 span {
                     color: $very-dark-blue;
@@ -45,7 +45,7 @@
     .other-details-wrapper {
         h3 {
             color: #e1e1e1;
-            font-weight: $ff-semi-bold;
+            font-weight: $fw-semi-bold;
         }
 
         .two-panels-container {
@@ -83,7 +83,8 @@
     margin: 3rem auto 1rem;
 
     @media (min-width: 768px) {
-        width: 60%;
+        width: 65%;
+        margin: 4rem auto 1rem;
     }
     @media (min-width: 1200px) {
         width: 100%;
@@ -106,10 +107,14 @@
         @media (min-width: 1000px) {
             height: 430px;
         }
+        @media (min-width: 1200px) {
+            height: 400px;
+        }
         
         img {
             width: 100%;
             height: 100%;
+            transition: $transition;
         }
     }
 
@@ -185,7 +190,7 @@
 
             h4 {
                 font-size: 0.95rem;
-                font-weight: $ff-semi-bold;
+                font-weight: $fw-semi-bold;
                 letter-spacing: 0.5px;
                 margin-bottom: 1.5rem;
 
@@ -210,7 +215,7 @@
                     justify-content: center;
                     align-items: center;
                     font-size: 0.75rem;
-                    font-weight: $ff-semi-bold;
+                    font-weight: $fw-semi-bold;
                     letter-spacing: 0.5px;
                     text-align: center;
                     padding: 0.5rem 0.6rem;
@@ -220,8 +225,11 @@
                     cursor: pointer;
                     transition: $transition;
 
+                    @media (min-width: 768px) {
+                        padding: 0.6rem 1.4rem;
+                    }
                     @media (min-width: 1000px) {
-                        padding: 0.65rem 1.4rem;
+                        padding: 0.7rem 1.4rem;
                     }
                 }
             }

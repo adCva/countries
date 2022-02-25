@@ -10,12 +10,12 @@
     
     .country-short-details {
         h4 {
-            font-weight: $ff-bold;
+            font-weight: $fw-bold;
         }
 
         p {
             color: $dark-gray;
-            font-weight: $ff-semi-bold;
+            font-weight: $fw-semi-bold;
 
             span {
                 color: $very-dark-blue;
@@ -30,10 +30,10 @@
 .country-card-dark {
     background-color: $dark-blue;
     color: $white;
-    box-shadow: $general-box-shadow;
+    box-shadow: none;
 
     &:hover {
-        box-shadow: $hover-general-box-shadow;
+        transform: scale(0.95);
     }
 
     .country-flag-container {
@@ -44,7 +44,7 @@
 
     .country-short-details {
         h4 {
-            font-weight: $ff-semi-bold;
+            font-weight: $fw-semi-bold;
         }
 
         p {
@@ -60,9 +60,10 @@
 
 
 
+
 // ============================== General style ==============================
 .country-card {
-    width: 77%;
+    width: 81%;
     max-width: 280px;
     height: 330px;
     border: none;

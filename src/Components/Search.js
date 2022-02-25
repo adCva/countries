@@ -1,38 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
-// React Spring.
+// ========= React Spring.
 import { useTransition, animated } from 'react-spring';
-// Icons.
+// ========= Icons.
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaSearchLocation } from "react-icons/fa";
-// Redux.
+// ========= Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
-import { displatSearchFilterResaults, cancelSearchFilter } from "../Features/countriesListData";
-import { startLoadingList } from "../Features/countriesListData";
+import { displatSearchFilterResaults, cancelSearchFilter, startLoadingList, updateRegionDisplayed } from "../Features/countriesListData";
 
 
 
 function Search() {
-    // Redux state, dispatch, local state & ref.
-    const countriesList = useSelector(state => state.countriesList.countriesListObj);
+    // ========= Redux state & dispatch.
     const countriesListBackup = useSelector(state => state.countriesList.backupCountriesListObj);
-    const viewMode = useSelector(state => state.viewMode.darkMode);
+    const regionDisplayed = useSelector(state => state.countriesList.regionDisplayed);
+    const darkMode = useSelector(state => state.viewMode.darkMode);
     const dispatch = useDispatch();
 
+
+    // ========= Local state & ref.
     const [ dropDown, setDropDown ] = useState(false);
-    const [name, setName] = useState('');
     const dropDownRef = useRef();
 
 
-    // Open/Close dropdown.
+    // ========= Open/Close dropdown.
     const toogleDropDown = () => {
         setDropDown(!dropDown);
-    }
+    };
 
 
-    // Filter.
-    const filter = (e) => {
-        const keyword = e.target.value;
+    // ========= Search filter.
+    const filter = (event) => {
+        const keyword = event.target.value;
 
         if (keyword !== '') {
             const backUp = countriesListBackup.data;
@@ -47,15 +47,20 @@ function Search() {
     }
 
 
-    // Region btn click.
-    const chooseRegion = (geoRegion) => {
-        dispatch(startLoadingList());
-        dispatch(makeCountriesListAPICall({region: geoRegion}));
-        setDropDown(false);
+    // ========= Region filter.
+    const chooseRegion = (continent) => {
+        if (continent === regionDisplayed) {
+            return null;
+        } else {
+            dispatch(startLoadingList());
+            dispatch(makeCountriesListAPICall({region: continent}));
+            dispatch(updateRegionDisplayed(continent))
+            setDropDown(false);
+        }
     }
 
 
-    // React Spring.
+    // ========= React Spring.
     const transition = useTransition(dropDown, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
@@ -63,28 +68,28 @@ function Search() {
     });
 
 
-    // Close dropdown on outside click.
+    // ========= Close dropdown on outside click.
     useEffect(() => {
-        let dropDownOutsideClick = (event) => {
+        let closeOutsideClick = (event) => {
             if (dropDown === true && !dropDownRef.current.contains(event.target)) {
                 setDropDown(false);
             }
         }
 
-
-        document.addEventListener("click", dropDownOutsideClick);
+        document.addEventListener("click", closeOutsideClick);
         return() => {
-            document.removeEventListener("click", dropDownOutsideClick);
+            document.removeEventListener("click", closeOutsideClick);
         }
-    })
+    });
+
 
 
     return (
-        <div className={viewMode ? "search-dropDown-container min-max-width search-dropDown-container-dark" : "search-dropDown-container min-max-width search-dropDown-container-light"}>
+        <div className={darkMode ? "search-dropDown-container search-dropDown-container-dark" : "search-dropDown-container search-dropDown-container-light"}>
             {/* ===================== Input, search by name ===================== */}
             <div className="search-by-name-wrapper">
                 <FaSearchLocation/>
-                <input type="text" name="country" placeholder="Search for a country..." id="searchCountry" onChange={filter}/>
+                <input type="text" name="country" placeholder="Search for a country..." onChange={filter} />
             </div>
             {/* ===================== Dropdown, search by region ===================== */}
             <div className="dropDown-wrapper">

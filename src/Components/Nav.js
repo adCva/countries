@@ -1,14 +1,14 @@
 import React from 'react';
-// Icons.
+// ========= Icons.
 import { BsFillMoonStarsFill, BsFillCloudSunFill } from "react-icons/bs";
-// Redux.
+// ========= Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { changeViewMode } from "../Features/viewModeSlice";
 
 
 
 function Nav() {
-    // Redux state & dispatch.
+    // ========= Redux state & dispatch.
     const viewMode = useSelector(state => state.viewMode.darkMode);
     const dispatch = useDispatch();
 

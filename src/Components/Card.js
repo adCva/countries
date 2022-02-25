@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
-// Redux.
+// ========= Redux.
 import { useSelector, useDispatch } from 'react-redux';
+import { startLoading } from "../Features/singlePageSlice";
 import { makeCountriesListAPICall } from "../Features/getCountriesMiddleware";
 import { getSingeCountryData } from "../Features/getSingleCountryMiddleware";
-import { startLoading } from "../Features/singlePageSlice";
 
 
 
 function Card() {
-  // Redux state & dispatch.
+  // ========= Redux state & dispatch.
   const countriesList = useSelector(state => state.countriesList.countriesListObj);
   const viewMode = useSelector(state => state.viewMode.darkMode);
   const dispatch = useDispatch();
 
   
-  // Make API call on page load.
+  // ========= Make API call on page load.
   useEffect(() => {
     let loadCountriesData = () => {
       dispatch(makeCountriesListAPICall({region: "all"}));
@@ -27,7 +27,7 @@ function Card() {
   });
 
 
-  // Go to details page.
+  // ========= Go to details page.
   const detailsPage = (countryCode) => {
     dispatch(startLoading());
     dispatch(getSingeCountryData({countryCode: countryCode}));
